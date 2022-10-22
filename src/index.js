@@ -1,6 +1,12 @@
 import _ from "lodash";
 import printMe from "./print.js";
+import Data from "./assets/js/data";
 import "./style.css";
+
+function loadJS() {
+  const data = new Data();
+  data.get("Amsterdam");
+}
 
 function component() {
   const element = document.createElement("div");
@@ -19,3 +25,4 @@ function component() {
 }
 
 document.body.appendChild(component());
+loadJS();
