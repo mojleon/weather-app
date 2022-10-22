@@ -1,10 +1,26 @@
 export default class UI {
-  constructor() {}
+  constructor(location) {
+    this.location = location;
+  }
 
-  setup() {}
-
-  async displayWeather(location) {
-    const weather = await data.get(location);
+  main(weather) {
+    const temp = weather.main.temp;
     console.log(weather);
   }
+
+  clouds(weather) {}
+
+  wind(weather) {}
+
+  timezones(weather) {}
+
+  visibility(weather) {}
+
+  sys(weather) {}
+
+  coord(weather) {}
+
+  weather(weather) {}
+
+  timezone(weather) {}
 }

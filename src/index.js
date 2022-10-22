@@ -3,13 +3,13 @@ import Data from "./assets/js/Data";
 import UI from "./assets/js/UI";
 import "./style.css";
 
-async function loadJS() {
-  const data = new Data();
-  let weather = await data.get("Amsterdam");
-  console.log(weather, "test");
+let location = "Amsterdam";
+const data = new Data(location);
+const ui = new UI(location);
 
-  let ui = new UI();
-  ui.displayWeather("Amsterdam");
+async function setup() {
+  let weather = await data.get();
+  ui.main(weather);
 }
 
 function component() {
@@ -22,4 +22,4 @@ function component() {
 }
 
 document.body.appendChild(component());
-loadJS();
+setup();
