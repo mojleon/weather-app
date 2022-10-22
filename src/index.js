@@ -1,23 +1,20 @@
 import _ from "lodash";
-import printMe from "./print.js";
-import Data from "./assets/js/data";
+import Data from "./assets/js/Data";
+import UI from "./assets/js/UI";
 import "./style.css";
 
-function loadJS() {
+async function loadJS() {
   const data = new Data();
-  data.get("Amsterdam");
+  let weather = await data.get("Amsterdam");
+  console.log(weather, "test");
+
+  let ui = new UI();
+  ui.displayWeather("Amsterdam");
 }
 
 function component() {
   const element = document.createElement("div");
   const btn = document.createElement("button");
-
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(["Hello", "webpack"], " ");
-
-  btn.innerHTML = "Click me and check the console!";
-
-  btn.onclick = printMe;
 
   element.appendChild(btn);
 
