@@ -1,3 +1,5 @@
+$background-color: black;
+
 @font-face {
   font-family: "Roboto";
   src: url("http://fonts.cdnfonts.com/css/roboto");
@@ -9,12 +11,19 @@ body {
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
-  background-color: black;
+  background-color: $background-color;
 
   font-family: "Roboto", sans-serif;
 }
 
-.temp {
+.container {
   color: white;
-  font-size: 32pt;
+
+  & .temp {
+    font-size: 32pt;
+  }
+
+  & .feels-like {
+    font-size: 24pt;
+  }
 }

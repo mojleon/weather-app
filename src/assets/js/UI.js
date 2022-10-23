@@ -4,9 +4,19 @@ export default class UI {
   }
 
   main(weather) {
-    const div = document.createElement("div");
+    console.log(weather);
+    const container = document.createElement("div");
+    container.classList.add("container");
     const temp = weather.main.temp;
-    this.appendToDom(div, temp, "temp");
+    const feelsLike = weather.main.feels_like;
+
+    container.append(
+      this.appendToDom(this.location, "location"),
+      this.appendToDom(temp, "temp"),
+      this.appendToDom(feelsLike, "feels-like")
+    );
+
+    document.body.append(container);
   }
 
   clouds(weather) {}
@@ -25,9 +35,10 @@ export default class UI {
 
   timezone(weather) {}
 
-  appendToDom(parent, child, className) {
+  appendToDom(child, className) {
+    const parent = document.createElement("div");
     parent.classList.add(className);
     parent.append(child);
-    document.body.append(parent);
+    return parent;
   }
 }
