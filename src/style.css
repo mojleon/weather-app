@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("http://fonts.cdnfonts.com/css/roboto");
+}
+
 body {
   background-image: url("./assets/images/wallpaper.jpg");
   background-repeat: no-repeat;
@@ -5,4 +10,11 @@ body {
   background-attachment: fixed;
   background-position: center;
   background-color: black;
+
+  font-family: "Roboto", sans-serif;
+}
+
+.temp {
+  color: white;
+  font-size: 32pt;
 }

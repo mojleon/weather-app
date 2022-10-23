@@ -4,8 +4,9 @@ export default class UI {
   }
 
   main(weather) {
+    const div = document.createElement("div");
     const temp = weather.main.temp;
-    console.log(weather);
+    this.appendToDom(div, temp, "temp");
   }
 
   clouds(weather) {}
@@ -23,4 +24,10 @@ export default class UI {
   weather(weather) {}
 
   timezone(weather) {}
+
+  appendToDom(parent, child, className) {
+    parent.classList.add(className);
+    parent.append(child);
+    document.body.append(parent);
+  }
 }
