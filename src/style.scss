@@ -1,4 +1,11 @@
 $background-color: black;
+$dark-gray: #333;
+$main-color: white;
+
+// Cloud vars
+$clouds: ("https://s.cdpn.io/15514/clouds_2.png" 1000px 20s),
+  ("https://s.cdpn.io/15514/clouds_1.png" 1000px 15s),
+  ("https://s.cdpn.io/15514/clouds_3.png" 1579px 17s);
 
 @font-face {
   font-family: "Roboto";
@@ -6,18 +13,34 @@ $background-color: black;
 }
 
 body {
-  background-image: url("./assets/images/wallpaper.jpg");
+  // background-image: url("./assets/images/wallpaper.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
-  background-color: $background-color;
 
   font-family: "Roboto", sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 .container {
-  color: white;
+  color: $main-color;
+  flex-wrap: wrap;
+  align-content: center;
+
+  & .weather-description {
+    font-size: 24pt;
+  }
+
+  & .location {
+    font-size: 14pt;
+  }
 
   & .temp {
     font-size: 32pt;
@@ -25,5 +48,64 @@ body {
 
   & .feels-like {
     font-size: 24pt;
+  }
+
+  & .icon {
+    filter: brightness(0) invert(1);
+  }
+
+  & input {
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid $main-color;
+    height: 32px;
+    color: $main-color;
+  }
+
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $main-color;
+    opacity: 1; /* Firefox */
+  }
+}
+
+.background {
+  position: absolute;
+  background-image: linear-gradient($background-color, $dark-gray);
+
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 110vh;
+  z-index: -1;
+
+  @for $i from 1 through length($clouds) {
+    $item: nth($clouds, $i);
+    $path: nth($item, 1);
+    $width: nth($item, 2);
+    $duration: nth($item, 3);
+
+    @keyframes clouds-loop-#{$i} {
+      to {
+        background-position: -$width 0;
+      }
+    }
+
+    .cloud:nth-child(#{$i}) {
+      background-image: url($path);
+      animation: clouds-loop-#{$i} $duration infinite linear;
+    }
+  }
+
+  & .cloud {
+    opacity: 0.4;
+    pointer-events: none;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-repeat-y: no-repeat;
   }
 }

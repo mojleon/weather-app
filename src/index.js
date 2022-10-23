@@ -12,14 +12,4 @@ async function setup() {
   ui.main(weather);
 }
 
-function component() {
-  const element = document.createElement("div");
-  const btn = document.createElement("button");
-
-  element.appendChild(btn);
-
-  return element;
-}
-
-document.body.appendChild(component());
 setup();
