@@ -4,7 +4,7 @@ export default class UI {
   }
 
   main(weather) {
-    console.log(weather);
+    console.log(this.location);
 
     const container = document.createElement("div");
     container.classList.add("container");
@@ -28,22 +28,6 @@ export default class UI {
   lineBreak() {
     return document.createElement("br");
   }
-
-  clouds(weather) {}
-
-  wind(weather) {}
-
-  timezones(weather) {}
-
-  visibility(weather) {}
-
-  sys(weather) {}
-
-  coord(weather) {}
-
-  weather(weather) {}
-
-  timezone(weather) {}
 
   appendToDom(child, className) {
     const parent = document.createElement("div");
@@ -74,15 +58,18 @@ export default class UI {
   }
 
   appendInput() {
-    const form = document.createElement("form");
+    const form = this.createForm();
     const input = document.createElement("input");
+    input.name = "location";
     input.placeholder = "Enter a location";
-    input.addEventListener("keydown", (e) => {
-      if (e.keyCode === 13) {
-        this.location = e.target.value;
-      }
-    });
     form.append(input);
+    return form;
+  }
+
+  createForm() {
+    const form = document.createElement("form");
+    form.setAttribute("action", "");
+    form.setAttribute("method", "get");
     return form;
   }
 
