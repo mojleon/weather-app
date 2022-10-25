@@ -13,7 +13,7 @@ $clouds: ("https://s.cdpn.io/15514/clouds_2.png" 1000px 20s),
 }
 
 body {
-  // background-image: url("./assets/images/wallpaper.jpg");
+  margin: 0;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -33,6 +33,7 @@ body {
   color: $main-color;
   flex-wrap: wrap;
   align-content: center;
+  text-align: center;
 
   & .weather-description {
     font-size: 24pt;
