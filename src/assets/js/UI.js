@@ -53,7 +53,7 @@ export default class UI {
   appendIcon(icon) {
     const img = document.createElement("img");
     img.classList.add("icon");
-    img.src = `http://openweathermap.org/img/w/${icon}.png`;
+    img.src = `https://openweathermap.org/img/w/${icon}.png`;
     return img;
   }
 
